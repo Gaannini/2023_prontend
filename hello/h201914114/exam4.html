@@ -1,0 +1,62 @@
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        div#app {
+            padding: 30px;
+            margin: 10px auto;
+            width: 1000px;
+            /* border: 1px solid #ccc; */
+            /* box-shadow: 3px 3px 3px #aaa; */
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        input {
+            padding: 5px;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .in {
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="in">
+            <input type="number" v-model="row_size" />
+        </div>
+        <table>
+            <tr v-for="r in row_size">
+                <td v-for="c in col_size">
+                    ({{ r }}, {{ c }})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        let app = {
+            data() {
+                return {
+                    row_size: 0,
+                    col_size: 10
+                };
+            }
+        };
+        Vue.createApp(app).mount("#app");
+    </script>
+</body>
+
+</html>

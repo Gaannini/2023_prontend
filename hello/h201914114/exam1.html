@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        div#app {
+            padding: 30px;
+            margin: 30px auto;
+            width: 350px;
+            border: 1px solid #ccc;
+            box-shadow: 3px 3px 3px #aaa;
+        }
+
+        div#app>div {
+            margin-top: 30px;
+        }
+
+        label:nth-child(1) {
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+            margin-right: 5px;
+        }
+
+        label:nth-child(2) {
+            margin-right: 20px;
+        }
+
+        input[type=text] {
+            padding: 6px;
+            width: 200px;
+        }
+
+        div.error {
+            margin-top: 5px;
+            margin-left: 70px;
+            color: red;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 10pt;
+            width: 150px;
+            /* margin: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>exam1</h1>
+        <div>
+            <label>이름:</label>
+            <input type="text" v-model="name" />
+        </div>
+        <div class="error" v-if="!name">
+            <p> 이름을 입력하세요</p>
+        </div>
+        <div>
+            <label>혈액형:</label>
+            <select v-model="blood">
+                <option value="" selected disabled hidden>혈액형을 선택해주세요</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="O">O</option>
+                <option value="AB">AB</option>
+            </select>
+        </div>
+        <div class="error" v-if="!blood">
+            <p> 혈액형을 입력하세요</p>
+        </div>
+        <div>
+            <label>성별:</label>
+            <label><input type="radio" v-model="sex" value="남" />남자</label>
+            <label><input type="radio" v-model="sex" value="여" />여자</label>
+        </div>
+        <div class="error" v-if="!sex">
+            <p> 성별은 필수항목입니다.</p>
+        </div>
+        <hr />
+        <p>name : {{ name }}</p>
+        <p>blood : {{ blood }}</p>
+        <p>gender : {{ sex }}</p>
+        <script type="text/javascript">
+            let app = {
+                data() {
+                    return {
+                        name: '',
+                        blood: '',
+                        sex: ''
+                    };
+                }
+            };
+            Vue.createApp(app).mount("#app");
+        </script>
+</body>
+
+</html>

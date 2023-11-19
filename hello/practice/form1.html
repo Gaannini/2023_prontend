@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        div#app {
+            padding: 30px;
+            margin: 30px auto;
+            width: 350px;
+            border: 1px solid #ccc;
+            box-shadow: 3px 3px 3px #aaa;
+        }
+
+        div#app>div {
+            margin-top: 30px;
+        }
+
+        label:nth-child(1) {
+            display: inline-block;
+            /* width: 70px; */
+            text-align: right;
+            margin-right: 5px;
+        }
+
+        label:nth-child(2) {
+            margin-right: 20px;
+        }
+
+        input[type=text] {
+            padding: 6px;
+            width: 200px;
+        }
+
+        div.error {
+            margin-top: 5px;
+            margin-left: 70px;
+            color: red;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 15pt;
+            width: 150px;
+            /* margin: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>입력양식</h1>
+        <div>
+            <input type="text" v-model="name" placeholder="이름을 입력하세요" />
+        </div>
+        <div>
+            <label><input type="radio" v-model="sex" value="male" />남자</label>
+            <label><input type="radio" v-model="sex" value="female" />여자</label>
+        </div>
+        <div>
+            <select v-model="choice">
+                <option value="" selected disabled hidden>전공을 선택해주세요</option>
+                <option value="소프">소프트웨어공학</option>
+                <option value="정통">정보통신공학</option>
+                <option value="컴공">컴퓨터공학</option>
+            </select>
+        </div>
+        <div>
+            <input type="checkbox" v-model="checkvalue" /> 활성화
+        </div>
+        <hr />
+        <p>이름 : {{ name }}</p>
+        <p>성별 : {{ sex }}</p>
+        <p>전공 :{{ choice }}</p>
+        <p>활성화 : {{ checkvalue }}</p>
+
+
+
+        <script type="text/javascript">
+            let app = {
+                data() {
+                    return {
+                        name: '',
+                        sex: '',
+                        choice: '',
+                        checkvalue: false,
+                    };
+                }
+            };
+            Vue.createApp(app).mount("#app");
+        </script>
+</body>
+
+</html>
